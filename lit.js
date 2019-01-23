@@ -2,7 +2,7 @@ import { html, render } from "./node_modules/lit-html/lit-html.js";
 
 // data
 let content;
-const endpoint = "https://5c0aa50a26902800135f6ca4.mockapi.io/";
+const dataLink = "https://5c0aa50a26902800135f6ca4.mockapi.io/";
 // skeleton
 const skeleton = html`
   <header><h1>fake likoba</h1></header>
@@ -14,7 +14,7 @@ render(skeleton, document.body);
 const filterContainer = document.querySelector(".filters");
 const claimContainer = document.querySelector(".claims");
 
-fetch(endpoint + "claims")
+fetch(dataLink + "claims")
   .then(res => res.json())
   .then(data => {
     content = data;
@@ -27,7 +27,7 @@ const claimList = allClaims => html`
       ${
         Object.keys(allClaims[0]).map(
           key => html`
-            <span class="cell">${key}</span>
+            <span class="cell" data-type="${key}" @click=${sort}>${key}</span>
           `
         )
       }
@@ -35,7 +35,7 @@ const claimList = allClaims => html`
     ${
       allClaims.map(
         eachClaim => html`
-          <p class="row">
+          <p class="row" @click=${edit}>
             ${
               Object.keys(eachClaim).map(
                 (key, i) =>
@@ -56,3 +56,26 @@ const claimList = allClaims => html`
 //   `;
 
 // render(filterList("... filter list ..."), filterContainer);
+
+function edit(e) {
+  const editInput = document.createElement("input");
+  editInput.classList.add("edit");
+  e.target.appendChild(editInput);
+  editInput.value = e.target.textContent;
+}
+function sort(e) {
+  const sortBy = e.target.dataset.type;
+  console.log(Array.isArray(content));
+  content = content.sort((a, b) => {
+    if (Number(a.money) > Number(b.money)) {
+      return 1;
+    }
+    if (Number(a.money) === Number(b.money)) {
+      return 0;
+    }
+    if (Number(a.money) < Number(b.money)) {
+      return -1;
+    }
+  });
+  render(claimList(content), claimContainer);
+}
