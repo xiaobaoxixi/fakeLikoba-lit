@@ -1,6 +1,7 @@
 import { html, render } from "./node_modules/lit-html/lit-html.js";
 
 // data
+let content;
 const endpoint = "https://5c0aa50a26902800135f6ca4.mockapi.io/";
 // skeleton
 const skeleton = html`
@@ -16,11 +17,21 @@ const claimContainer = document.querySelector(".claims");
 fetch(endpoint + "claims")
   .then(res => res.json())
   .then(data => {
-    render(claimList(data), claimContainer);
+    content = data;
+    render(claimList(content), claimContainer);
   });
 
 const claimList = allClaims => html`
   <div class="claim-list">
+    <p class="head row">
+      ${
+        Object.keys(allClaims[0]).map(
+          key => html`
+            <span class="cell">${key}</span>
+          `
+        )
+      }
+    </p>
     ${
       allClaims.map(
         eachClaim => html`
@@ -37,9 +48,9 @@ const claimList = allClaims => html`
     }
   </div>
 `;
-const filterList = eachFilter =>
-  html`
-    <p>${eachFilter}</p>
-  `;
+// const filterList = eachFilter =>
+//   html`
+//     <p>${eachFilter}</p>
+//   `;
 
-render(filterList("... filter list ..."), filterContainer);
+// render(filterList("... filter list ..."), filterContainer);

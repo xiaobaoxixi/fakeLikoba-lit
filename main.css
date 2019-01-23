@@ -1,13 +1,16 @@
 * {
   font-family: sans-serif;
+  box-sizing: border-box;
 }
 
 h1 {
   text-align: center;
 }
+.head {
+  font-weight: bold;
+  border-bottom: 3px solid black;
+}
 .row {
-  flex-flow: row nowrap;
-  align-items: flex-start;
   display: flex;
 }
 .row:nth-of-type(even) {
@@ -15,7 +18,8 @@ h1 {
 }
 .cell {
   align-self: center;
-  display: inline-block;
-  width: 130px;
+  width: 200px;
+  text-overflow: ellipsis;
   padding: 10px 30px;
+  border-left: 1px solid black;
 }
