@@ -1,0 +1,22 @@
+{
+  "name": "fakelikoba-lit",
+  "version": "1.0.0",
+  "description": "tryout lit-html",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaobaoxixi/fakeLikoba-lit.git"
+  },
+  "author": "Yan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiaobaoxixi/fakeLikoba-lit/issues"
+  },
+  "homepage": "https://github.com/xiaobaoxixi/fakeLikoba-lit#readme",
+  "dependencies": {
+    "lit-html": "^1.0.0-rc.2"
+  }
+}
