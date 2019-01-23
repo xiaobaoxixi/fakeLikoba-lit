@@ -1,0 +1,21 @@
+* {
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+.row {
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  display: flex;
+}
+.row:nth-of-type(even) {
+  background: rgba(230, 230, 230, 0.3);
+}
+.cell {
+  align-self: center;
+  display: inline-block;
+  width: 130px;
+  padding: 10px 30px;
+}
