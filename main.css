@@ -1,25 +1,42 @@
 * {
   font-family: sans-serif;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
-
+.claims,
+.filters {
+  top: 70px;
+  overflow: scroll;
+}
 h1 {
+  width: 100%;
   text-align: center;
+}
+header {
+  width: 100%;
+  position: fixed;
+  height: 70px;
+  background: white;
+  z-index: 1;
 }
 .head {
   font-weight: bold;
   border-bottom: 3px solid black;
 }
 .row {
-  display: flex;
+  white-space: nowrap;
+  display: inline-block;
 }
 .row:nth-of-type(even) {
   background: rgba(230, 230, 230, 0.3);
 }
 .cell {
   align-self: center;
+  display: inline-block;
   width: 200px;
+  overflow: hidden;
   text-overflow: ellipsis;
   padding: 10px 30px;
-  border-left: 1px solid black;
 }
