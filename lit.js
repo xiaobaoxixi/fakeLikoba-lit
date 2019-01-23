@@ -39,7 +39,9 @@ const claimList = allClaims => html`
             ${
               Object.keys(eachClaim).map(
                 (key, i) =>
-                  html`<span class="cell">${Object.values(eachClaim)[i]}</span`
+                  html`
+                    <span class="cell">${Object.values(eachClaim)[i]}</span>
+                  `
               )
             }
           </p>
