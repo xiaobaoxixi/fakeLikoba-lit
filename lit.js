@@ -5,7 +5,7 @@ let content;
 const endpoint = "https://5c0aa50a26902800135f6ca4.mockapi.io/";
 // skeleton
 const skeleton = html`
-  <header><h1 class="h2">fake likoba</h1></header>
+  <header><h1>fake likoba</h1></header>
   <div class="filters"></div>
   <div class="claims"></div>
 `;
