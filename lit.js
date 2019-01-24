@@ -1,6 +1,12 @@
 import { html, render } from "./node_modules/lit-html/lit-html.js";
 
 // data
+
+class AllClaims {
+  constructor(data) {
+    render(claimList(data), claimContainer);
+  }
+}
 let content;
 const dataLink = "https://5c0aa50a26902800135f6ca4.mockapi.io/";
 // skeleton
@@ -17,8 +23,9 @@ const claimContainer = document.querySelector(".claims");
 fetch(dataLink + "claims")
   .then(res => res.json())
   .then(data => {
+    new AllClaims(data);
     content = data;
-    render(claimList(content), claimContainer);
+    //    render(claimList(content), claimContainer);
   });
 
 const claimList = allClaims => html`
@@ -59,8 +66,7 @@ function edit(e) {
 }
 function sort(e) {
   const sortBy = e.target.dataset.type;
-  console.log(Array.isArray(content));
-  content = content.sort((a, b) => {
+  let sorted = content.sort((a, b) => {
     if (Number(a.money) > Number(b.money)) {
       return 1;
     }
@@ -71,5 +77,5 @@ function sort(e) {
       return -1;
     }
   });
-  render(claimList(content), claimContainer);
+  new AllClaims(sorted);
 }
