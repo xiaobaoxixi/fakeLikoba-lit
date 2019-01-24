@@ -50,12 +50,6 @@ const claimList = allClaims => html`
     }
   </div>
 `;
-// const filterList = eachFilter =>
-//   html`
-//     <p>${eachFilter}</p>
-//   `;
-
-// render(filterList("... filter list ..."), filterContainer);
 
 function edit(e) {
   const editInput = document.createElement("input");
